@@ -25,3 +25,7 @@ target/
 ### Environment ###
 .env
 *.env
+
+### Pingsdorf runtime ###
+data/
+
