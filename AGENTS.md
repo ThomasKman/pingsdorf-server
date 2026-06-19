@@ -14,7 +14,7 @@ real-time sync between users.
 
 ### Tech Stack (this repo)
 
-- **Runtime:** Java 21
+- **Runtime:** Java 25
 - **Framework:** Spring Boot 4 (Web, Security, Validation, Actuator, Data MongoDB)
 - **Database:** MongoDB
 - **Build:** Maven

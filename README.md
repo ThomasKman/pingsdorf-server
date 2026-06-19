@@ -7,7 +7,7 @@ See [`AGENTS.md`](./AGENTS.md) for the full product / API spec.
 
 ## Stack
 
-- Java 21, Spring Boot 4 (Web, Security, Validation, WebSocket, Data MongoDB)
+- Java 25, Spring Boot 4 (Web, Security, Validation, WebSocket, Data MongoDB)
 - MongoDB
 - JWT (HS256) for auth
 - STOMP-over-WebSocket for realtime updates
