@@ -4,6 +4,10 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB_URI:mongodb://localhost:27017/pingsdorf}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 12MB
 
 server:
   port: 8080
@@ -16,3 +20,16 @@ management:
   endpoint:
     health:
       show-details: when-authorized
+
+pingsdorf:
+  jwt:
+    # MUST be at least 32 bytes. Override in production via PINGSDORF_JWT_SECRET.
+    secret: ${PINGSDORF_JWT_SECRET:dev-only-secret-please-change-me-32bytes!}
+    issuer: pingsdorf
+    ttl: 7d
+  storage:
+    # Local filesystem storage root for uploaded images.
+    local:
+      base-dir: ${PINGSDORF_STORAGE_DIR:./data/uploads}
+    # Public URL prefix for served images; the /files/** controller serves them.
+    public-base-url: ${PINGSDORF_PUBLIC_BASE_URL:http://localhost:8080/files}

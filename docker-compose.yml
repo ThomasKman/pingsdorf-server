@@ -1,0 +1,26 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  server:
+    build: .
+    depends_on:
+      - mongo
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/pingsdorf
+      PINGSDORF_JWT_SECRET: ${PINGSDORF_JWT_SECRET:-dev-only-secret-please-change-me-32bytes!}
+      PINGSDORF_PUBLIC_BASE_URL: ${PINGSDORF_PUBLIC_BASE_URL:-http://localhost:8080/files}
+      PINGSDORF_STORAGE_DIR: /app/data/uploads
+    ports:
+      - "8080:8080"
+    volumes:
+      - uploads:/app/data/uploads
+
+volumes:
+  mongo-data:
+  uploads:
